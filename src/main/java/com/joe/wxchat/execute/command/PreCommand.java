@@ -18,6 +18,6 @@ public class PreCommand extends AbstractCommand {
         }else if(User.OPER_ADD==user.getOperType()){
 
         }
-        return DefaultResponseTextMessage.getAskTextMsg(user);
+        return DefaultResponseTextMessage.getTipsTextMsg(user);
     }
 }

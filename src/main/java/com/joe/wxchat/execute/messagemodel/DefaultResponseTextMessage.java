@@ -13,17 +13,18 @@ import org.apache.log4j.Logger;
 public class DefaultResponseTextMessage {
 
     private static Logger logger = Logger.getLogger(DefaultResponseTextMessage.class);
+
     public static RespTextMessage getErrorTextMsg(User user) {
         RespTextMessage respTextMessage = createDefaultTextMsg(user.getUserName());
         String ls = LineSeparator.Web;
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("欢迎使用Java程序员面试手册，请参考下面描述进行操作。").append(ls);
+        stringBuilder.append("欢迎使用Java程序员面试手册，请参考下面描述进行操作。提醒：以下标点均为英文字符，暂不支持中文字符。").append(ls);
         stringBuilder.append(OpertionConstants.OPER_ADD).append("：新增记录").append(ls);
+        stringBuilder.append(OpertionConstants.OPER_END).append("：保存记录").append(ls);
         stringBuilder.append(OpertionConstants.OPER_QUERY).append("：模糊查询").append(ls);
         stringBuilder.append(OpertionConstants.OPER_VIEW).append("：查看详细").append(ls);
         stringBuilder.append(OpertionConstants.OPER_PRE).append("：向前翻页").append(ls);
         stringBuilder.append(OpertionConstants.OPER_NEXT).append("：向后翻页").append(ls);
-        stringBuilder.append(OpertionConstants.OPER_CLEAR).append("：清除命令记录").append(ls);
         stringBuilder.append("如有疑问，请点击<a href='www.baidu.com' style='color:#0000FF'>详细帮助文档</a>").append(ls);
         respTextMessage.setContent(stringBuilder.toString());
         return respTextMessage;
@@ -32,6 +33,12 @@ public class DefaultResponseTextMessage {
     public static RespTextMessage getAskTextMsg(User user) {
         RespTextMessage respTextMessage = createDefaultTextMsg(user.getUserName());
         respTextMessage.setContent("请输入查询（“!% 关键字 ”）的命令或者创建（“!+”）的命令。");
+        return respTextMessage;
+    }
+
+    public static RespTextMessage getTipsTextMsg(User user) {
+        RespTextMessage respTextMessage = createDefaultTextMsg(user.getUserName());
+        respTextMessage.setContent("该命令暂未实现。");
         return respTextMessage;
     }
 
@@ -44,7 +51,7 @@ public class DefaultResponseTextMessage {
 
     public static RespTextMessage createDefaultTextMsg(String toUserName) {
         logger.info("----create default text message-------");
-        logger.info("toUser.name="+toUserName);
+        logger.info("toUser.name=" + toUserName);
         RespTextMessage respTextMessage = new RespTextMessage();
         respTextMessage.setCreateTime(new Date().getTime());
         respTextMessage.setFromUserName(Constants.SERVER_ID);
