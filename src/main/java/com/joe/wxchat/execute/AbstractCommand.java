@@ -3,7 +3,7 @@ package com.joe.wxchat.execute;
 import com.joe.server.service.ArticleService;
 import com.joe.utils.SpringContextHolder;
 import com.joe.wxchat.entity.message.resp.RespBaseMessage;
-import com.joe.wxchat.entity.user.User.User;
+import com.joe.server.dao.entity.User;
 
 /**
  *

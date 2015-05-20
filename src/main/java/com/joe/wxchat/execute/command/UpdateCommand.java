@@ -3,7 +3,7 @@ package com.joe.wxchat.execute.command;
 import java.util.Map;
 
 import com.joe.wxchat.entity.message.resp.RespBaseMessage;
-import com.joe.wxchat.entity.user.User.User;
+import com.joe.server.dao.entity.User;
 import com.joe.wxchat.execute.AbstractCommand;
 import com.joe.wxchat.execute.flow.ArticleFlow;
 
@@ -18,7 +18,7 @@ public class UpdateCommand extends AbstractCommand {
 
         Map<Integer, String> contentMap = articleFlow.getStepContentMap();
         contentMap.put(articleFlow.getCurrentStep(), user.getCurrentContent());
-        if (articleFlow.getCurrentStep() < ArticleFlow.STEP_5) {
+        if (articleFlow.getCurrentStep() < ArticleFlow.STEP_4) {
             articleFlow.setCurrentStep(articleFlow.getCurrentStep() + 1);
         }
         return articleFlow.getCurrentTipTextMsg(user);

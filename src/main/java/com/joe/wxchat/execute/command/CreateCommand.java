@@ -1,7 +1,7 @@
 package com.joe.wxchat.execute.command;
 
 import com.joe.wxchat.entity.message.resp.RespBaseMessage;
-import com.joe.wxchat.entity.user.User.User;
+import com.joe.server.dao.entity.User;
 import com.joe.wxchat.execute.AbstractCommand;
 import com.joe.wxchat.execute.flow.ArticleFlow;
 

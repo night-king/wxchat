@@ -14,5 +14,6 @@ public class OpertionConstants {
 
     public static String OPER_ADD = "!+";
     public static String OPER_END = "!$";
+    public static String OPER_DEL = "!-";
 
 }

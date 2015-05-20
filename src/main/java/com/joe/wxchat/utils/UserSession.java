@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.joe.wxchat.entity.message.req.ReqTextMessage;
-import com.joe.wxchat.entity.user.User.User;
+import com.joe.server.dao.entity.User;
 import org.apache.log4j.Logger;
 
 /**

@@ -2,12 +2,15 @@ This is the interface of weixin.
 
 it need a private subscription id.
 
-Now, it implement insert and query a message.
+Now, it implement this.
+
+1. CRD(Create, Read, Del) has finish.
+
+2. Query by title. select * from table where title like %queryStr%.
 
 In the future, I will do the following.
 
-1. Pre page and Next page.
-
-2. Add delete text.
-
-3. Add User Permissions, Allows individual users to have administrative privileges.
+1. add the Full-text index.
+   a.  Base on mysql.
+   b.  Base on solr.
+   c.  Base on lucene.

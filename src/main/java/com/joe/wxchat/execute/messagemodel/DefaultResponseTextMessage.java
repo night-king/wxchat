@@ -5,7 +5,7 @@ import java.util.Date;
 
 import com.joe.utils.LineSeparator;
 import com.joe.wxchat.entity.message.resp.RespTextMessage;
-import com.joe.wxchat.entity.user.User.User;
+import com.joe.server.dao.entity.User;
 import com.joe.wxchat.utils.Constants;
 import com.joe.wxchat.utils.OpertionConstants;
 import org.apache.log4j.Logger;
@@ -21,6 +21,7 @@ public class DefaultResponseTextMessage {
         stringBuilder.append("欢迎使用Java程序员面试手册，请参考下面描述进行操作。提醒：以下标点均为英文字符，暂不支持中文字符。").append(ls);
         stringBuilder.append(OpertionConstants.OPER_ADD).append("：新增记录").append(ls);
         stringBuilder.append(OpertionConstants.OPER_END).append("：保存记录").append(ls);
+        stringBuilder.append(OpertionConstants.OPER_DEL).append("：删除记录").append(ls);
         stringBuilder.append(OpertionConstants.OPER_QUERY).append("：模糊查询").append(ls);
         stringBuilder.append(OpertionConstants.OPER_VIEW).append("：查看详细").append(ls);
         stringBuilder.append(OpertionConstants.OPER_PRE).append("：向前翻页").append(ls);

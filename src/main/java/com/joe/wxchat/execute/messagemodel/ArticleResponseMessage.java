@@ -7,7 +7,7 @@ import com.joe.utils.LineSeparator;
 import com.joe.wxchat.entity.message.resp.RespBaseMessage;
 import com.joe.wxchat.entity.message.resp.RespNewsMessage;
 import com.joe.wxchat.entity.message.resp.RespTextMessage;
-import com.joe.wxchat.entity.user.User.User;
+import com.joe.server.dao.entity.User;
 import com.joe.wxchat.utils.Constants;
 
 /**
@@ -27,18 +27,28 @@ public class ArticleResponseMessage {
         return newsMessage;
     }
 
-    public static RespBaseMessage getDefaultTextMsg(User user, List<Article> articleList) {
+    public static RespBaseMessage getArticleListTextMsg(User user, List<Article> articleList) {
         RespTextMessage textMessage = DefaultResponseTextMessage.createDefaultTextMsg(user.getUserName());
         String ls = LineSeparator.Web;
 
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("请输入“!@”+“编号” 如：“!@1” 查看详细内容").append(ls);
-        for (Article article : articleList) {
-            stringBuilder.append(article.getId()).append("：").append(article.getTitle()).append(ls);
+        stringBuilder.append("查询结果：").append(ls);
+        if (articleList.size() > 0) {
+            stringBuilder.append(String.format("<a herf='www.baidu.com'>共%03d页</a>，当前是<a herf='#'>第%03d页</a>。", user.getPageCounts() + 1, user.getPageNum() + 1)).append(ls).append(ls);
+            for (Article article : articleList) {
+                stringBuilder.append("<a herf='mail.163.com' color='blue'>").append(article.getId()).append("</a>：").append(article.getTitle()).append(ls);
+            }
+            stringBuilder.append(ls).append("请输入“!@”+“编号” 如：“!@1” 查看详细内容。");
+        } else {
+            stringBuilder.append("未查到合适的数据。");
         }
-        stringBuilder.append(String.format("共%d%d页，当前是<a color='blue'>第%d%d</a>页", user.getPageCounts(), 1, user.getPageNum(), 1));
         textMessage.setContent(stringBuilder.toString());
         return textMessage;
     }
 
+    public static RespBaseMessage getDelTextMsg(User user, String context) {
+        RespTextMessage textMessage = DefaultResponseTextMessage.createDefaultTextMsg(user.getUserName());
+        textMessage.setContent(context);
+        return textMessage;
+    }
 }

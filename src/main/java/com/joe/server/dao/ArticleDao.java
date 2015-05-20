@@ -13,6 +13,7 @@ import org.springframework.jdbc.core.simple.ParameterizedBeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
 
 /**
+ * NOTE: Article dao.
  * Created by zhouwd on 15-5-16.
  */
 @Repository
@@ -55,5 +56,10 @@ public class ArticleDao {
         String sql = "select count(*) as countNum from article where title like ?";
         int result = jdbcTemplate.queryForObject(sql, Integer.class, "%" + queryStr + "%");
         return result / Constants.RESP_MESSAGE_ARTICLES_PAGENUM;
+    }
+
+    public int deleteAriticle(int id){
+        String sql="delete from article where id=?";
+        return jdbcTemplate.update(sql, id);
     }
 }

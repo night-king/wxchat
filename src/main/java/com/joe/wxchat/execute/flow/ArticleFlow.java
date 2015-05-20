@@ -4,11 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.joe.wxchat.entity.message.resp.RespTextMessage;
-import com.joe.wxchat.entity.user.User.User;
+import com.joe.server.dao.entity.User;
 import com.joe.wxchat.execute.messagemodel.DefaultResponseTextMessage;
 
 /**
- * NOTE:
+ * NOTE:Create Article Flow
  * Created by zhouwd on 15-5-17.
  */
 public class ArticleFlow {
@@ -74,11 +74,11 @@ public class ArticleFlow {
         } else if (STEP_1 == step) {
             content = "请输入标题。";
         } else if (STEP_2 == step) {
-            content = "请输入内容。输入“<”返回上一步。";
+            content = "请输入内容。输入“!<”返回上一步。";
         } else if (STEP_3 == step) {
-            content = "请上传图片，如果没有，请直接输入“>”跳到下一步。输入“<”可以返回上一步。";
+            content = "请上传图片，如果没有，请直接输入“!>”跳到下一步。输入“!<”可以返回上一步。";
         } else if (STEP_4 == step) {
-            content = "请输入“!$”结束。输入“<”可以返回上一步。";
+            content = "请输入“!$”结束。输入“!<”可以返回上一步。";
         } else if (STEP_5 == step) {
             content = "请输入“!$”结束。";
         } else {

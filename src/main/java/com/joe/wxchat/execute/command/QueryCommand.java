@@ -5,7 +5,7 @@ import java.util.List;
 import com.joe.server.dao.entity.Article;
 import com.joe.server.service.ArticleService;
 import com.joe.wxchat.entity.message.resp.RespBaseMessage;
-import com.joe.wxchat.entity.user.User.User;
+import com.joe.server.dao.entity.User;
 import com.joe.wxchat.execute.AbstractCommand;
 import com.joe.wxchat.execute.messagemodel.ArticleResponseMessage;
 import com.joe.wxchat.execute.messagemodel.DefaultResponseTextMessage;
@@ -28,6 +28,6 @@ public class QueryCommand extends AbstractCommand {
         user.setCurrentContent(context);
         user.setPageCounts(pageCount);
         List<Article> articleList = articleService.queryArticleList(user);
-        return ArticleResponseMessage.getDefaultTextMsg(user, articleList);
+        return ArticleResponseMessage.getArticleListTextMsg(user, articleList);
     }
 }

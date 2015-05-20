@@ -5,7 +5,7 @@ import com.joe.server.service.ArticleService;
 import com.joe.utils.LineSeparator;
 import com.joe.wxchat.entity.message.resp.RespBaseMessage;
 import com.joe.wxchat.entity.message.resp.RespTextMessage;
-import com.joe.wxchat.entity.user.User.User;
+import com.joe.server.dao.entity.User;
 import com.joe.wxchat.execute.AbstractCommand;
 import com.joe.wxchat.execute.messagemodel.DefaultResponseTextMessage;
 import com.joe.wxchat.utils.OpertionConstants;

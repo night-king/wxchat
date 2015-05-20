@@ -1,4 +1,4 @@
-package com.joe.wxchat.entity.user.User;
+package com.joe.server.dao.entity;
 
 import com.joe.wxchat.entity.message.req.ReqTextMessage;
 import com.joe.wxchat.entity.message.resp.RespTextMessage;
@@ -14,6 +14,11 @@ public class User {
     public static int OPER_QUERY = 0;
     public static int OPER_ADD = 1;
 
+    public static int ROLE_ADMIN=0;
+    public static int ROLE_REGISTER=1;
+    public static int ROLE_GUEST;
+
+
     private String userName;
     private String currentContent;
     private String queryContent;
@@ -21,6 +26,7 @@ public class User {
     private int pageNum;
     private long lastOperTime;
     private int operType = OPER_QUERY;
+    private int userRole=ROLE_ADMIN;
     private ArticleFlow articleFlow = new ArticleFlow();
     private MessageList<ReqTextMessage> reqMessageList = new MessageList<>();
     private MessageList<RespTextMessage> respMessageList = new MessageList<>();
@@ -110,5 +116,13 @@ public class User {
 
     public void setRespMessageList(MessageList<RespTextMessage> respMessageList) {
         this.respMessageList = respMessageList;
+    }
+
+    public int getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(int userRole) {
+        this.userRole = userRole;
     }
 }

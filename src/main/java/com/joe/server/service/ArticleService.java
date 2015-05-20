@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.joe.server.dao.ArticleDao;
 import com.joe.server.dao.entity.Article;
-import com.joe.wxchat.entity.user.User.User;
+import com.joe.server.dao.entity.User;
 import com.joe.wxchat.utils.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,4 +39,7 @@ public class ArticleService {
         return articleDao.insertArticle(article);
     }
 
+    public int delArticle(int id) {
+        return articleDao.deleteAriticle(id);
+    }
 }

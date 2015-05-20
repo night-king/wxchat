@@ -6,7 +6,7 @@ import com.joe.server.dao.entity.Article;
 import com.joe.server.service.ArticleService;
 import com.joe.wxchat.entity.message.resp.RespBaseMessage;
 import com.joe.wxchat.entity.message.resp.RespTextMessage;
-import com.joe.wxchat.entity.user.User.User;
+import com.joe.server.dao.entity.User;
 import com.joe.wxchat.execute.AbstractCommand;
 import com.joe.wxchat.execute.flow.ArticleFlow;
 import com.joe.wxchat.execute.messagemodel.ArticleResponseMessage;
@@ -29,7 +29,7 @@ public class NextCommand extends AbstractCommand {
                 return respTextMessage;
             }
 
-            if (ArticleFlow.STEP_5 < articleFlow.getCurrentStep()) {
+            if (articleFlow.getCurrentStep() < ArticleFlow.STEP_4) {
                 articleFlow.setCurrentStep(articleFlow.getCurrentStep() + 1);
             }
             return articleFlow.getCurrentTipTextMsg(user);
@@ -38,7 +38,7 @@ public class NextCommand extends AbstractCommand {
                 user.setPageNum(user.getPageNum() + 1);
             }
             List<Article> articleList = articleService.queryArticleList(user);
-            return ArticleResponseMessage.getDefaultTextMsg(user,articleList);
+            return ArticleResponseMessage.getArticleListTextMsg(user, articleList);
         }
         return DefaultResponseTextMessage.getAskTextMsg(user);
     }
