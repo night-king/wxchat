@@ -28,7 +28,7 @@ public class OpertionUtils {
     public static final int TYPE_QUERY = 0;
     public static final int TYPE_VIEW = 1;
     public static final int TYPE_PRE = 2;
-    public static final int TYPE_NEXT ˚= 3;
+    public static final int TYPE_NEXT = 3;
     public static final int TYPE_CLEAR = 4;
     public static final int TYPE_ADD = 5;
     public static final int TYPE_SAVE = 6;
