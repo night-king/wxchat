@@ -23,11 +23,12 @@ public class UserSession {
         user.getReqMessageList().add(reqTextMessage);
         String content = reqTextMessage.getContent();
         user.setCurrentContent(reqTextMessage.getContent());
-        if (content.startsWith(OpertionConstants.OPER_QUERY)) {
-            user.setQueryContent(content.replace(OpertionConstants.OPER_QUERY,""));
+        int operType = OpertionUtils.getOperType(content);
+        if (OpertionUtils.TYPE_QUERY == operType) {
+            user.setQueryContent(OpertionUtils.getRequestContent(content));
             user.setPageNum(0);
             user.setOperType(User.OPER_QUERY);
-        } else if (content.startsWith(OpertionConstants.OPER_ADD)) {
+        } else if (OpertionUtils.TYPE_ADD == operType) {
             user.setOperType(User.OPER_ADD);
             user.getArticleFlow().setCurrentStep(0);
         }
@@ -40,7 +41,7 @@ public class UserSession {
      * @param userName
      */
     public static void checkUser(String userName) {
-        logger.info(UserSession.class+".checkUser----");
+        logger.info(UserSession.class + ".checkUser----");
         logger.info(userMap.keySet());
         User user = userMap.get(userName);
         if (user == null) {

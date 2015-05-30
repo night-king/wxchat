@@ -5,7 +5,7 @@ import com.joe.server.service.ArticleService;
 import com.joe.wxchat.entity.message.resp.RespBaseMessage;
 import com.joe.wxchat.execute.AbstractCommand;
 import com.joe.wxchat.execute.messagemodel.ArticleResponseMessage;
-import com.joe.wxchat.utils.OpertionConstants;
+import com.joe.wxchat.utils.OpertionUtils;
 
 /**
  * NOTE:
@@ -15,7 +15,7 @@ public class DelCommand extends AbstractCommand {
     @Override
     public RespBaseMessage execute(User user) {
         ArticleService articleService = getArticleServiceBean();
-        String idStr = user.getCurrentContent().replace(OpertionConstants.OPER_DEL, "");
+        String idStr = OpertionUtils.getRequestContent(user.getCurrentContent());
         String context;
         try {
             int id = Integer.valueOf(idStr);

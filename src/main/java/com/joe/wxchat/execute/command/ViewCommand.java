@@ -8,7 +8,7 @@ import com.joe.wxchat.entity.message.resp.RespTextMessage;
 import com.joe.server.dao.entity.User;
 import com.joe.wxchat.execute.AbstractCommand;
 import com.joe.wxchat.execute.messagemodel.DefaultResponseTextMessage;
-import com.joe.wxchat.utils.OpertionConstants;
+import com.joe.wxchat.utils.OpertionUtils;
 
 /**
  * NOTE:
@@ -18,7 +18,7 @@ public class ViewCommand extends AbstractCommand {
     @Override
     public RespBaseMessage execute(User user) {
         ArticleService articleService = getArticleServiceBean();
-        String context = user.getCurrentContent().replace(OpertionConstants.OPER_VIEW, "");
+        String context = OpertionUtils.getRequestContent(user.getCurrentContent());
         try {
             int id = Integer.valueOf(context);
             Article article = articleService.queryArticleDetail(id);

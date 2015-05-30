@@ -36,7 +36,7 @@ public class ArticleResponseMessage {
         if (articleList.size() > 0) {
             stringBuilder.append(String.format("<a herf='www.baidu.com'>共%03d页</a>，当前是<a herf='#'>第%03d页</a>。", user.getPageCounts() + 1, user.getPageNum() + 1)).append(ls).append(ls);
             for (Article article : articleList) {
-                stringBuilder.append("<a herf='mail.163.com' color='blue'>").append(article.getId()).append("</a>：").append(article.getTitle()).append(ls);
+                stringBuilder.append("<a herf='mail.163.com' color='blue'>").append(article.getId()).append("</a>：").append(article.getTitle()).append(ls).append(ls);
             }
             stringBuilder.append(ls).append("请输入“!@”+“编号” 如：“!@1” 查看详细内容。");
         } else {
